@@ -1,0 +1,60 @@
+syntax = "proto3";
+package department;
+
+message Department {
+  int32 id = 1;
+  string name = 2;
+  // Ajouter d'autres champs de données pour le département au besoin
+}
+
+message FindDepartmentRequest {
+  int32 department_id = 1;
+}
+
+message FindDepartmentResponse {
+  Department department = 1;
+}
+
+message GetDepartmentsRequest {
+  string query = 1;
+}
+
+message GetDepartmentsResponse {
+  repeated Department departments = 1;
+}
+
+message CreateDepartmentRequest {
+  int32 dep_id = 1;
+  string name = 2;
+}
+
+message CreateDepartmentResponse {
+  Department department = 1;
+}
+
+message DeleteDepartmentRequest {
+  int32 department_id = 1;
+}
+
+message DeleteDepartmentResponse {
+  bool success = 1;
+}
+
+message UpdateDepartmentRequest {
+  int32 dep_id = 1;
+  string name = 2;
+}
+
+message UpdateDepartmentResponse {
+  Department department = 1;
+}
+
+// Définition du service de département
+service DepartmentService {
+  rpc FindDepartment(FindDepartmentRequest) returns (FindDepartmentResponse);
+  rpc GetDepartments(GetDepartmentsRequest) returns (GetDepartmentsResponse);
+  rpc CreateDepartment(CreateDepartmentRequest) returns (CreateDepartmentResponse);
+  rpc DeleteDepartment(DeleteDepartmentRequest) returns (DeleteDepartmentResponse);
+  rpc UpdateDepartment(UpdateDepartmentRequest) returns (UpdateDepartmentResponse);
+  // Ajouter d'autres méthodes au besoin
+}

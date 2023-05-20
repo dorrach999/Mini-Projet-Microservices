@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+message Teacher {
+  int32 id = 1;
+  string name = 2;
+  string lastname = 3;
+  string email = 4;
+  int32 departmentCode = 5;
+}
+
+message FindTeacherRequest {
+  int32 teacher_id = 1;
+}
+
+message FindTeacherResponse {
+  Teacher teacher = 1;
+}
+
+message GetTeachersRequest {
+  string query = 1;
+}
+
+message GetTeachersResponse {
+  repeated Teacher teachers = 1;
+}
+
+message CreateTeacherRequest {  
+  int32  teacher_id = 1;
+  string name = 2;
+  string lastname = 3;
+  string email = 4;
+  int32 departmentCode = 5;
+}
+
+message CreateTeacherResponse {
+  Teacher teacher = 1;
+}
+
+message DeleteTeacherRequest {
+  int32 teacher_id = 1;
+}
+
+message DeleteTeacherResponse {
+  bool success = 1;
+}
+
+message UpdateTeacherRequest {
+  int32 teacher_id = 1;
+  string name = 2;
+  string lastname = 3;
+  string email = 4;
+  int32 departmentCode = 5;
+}
+
+message UpdateTeacherResponse {
+  Teacher teacher = 1;
+}
+
+// Définition du service d'enseignants
+service TeacherService {
+  rpc FindTeacher(FindTeacherRequest) returns (FindTeacherResponse);
+  rpc GetTeachers(GetTeachersRequest) returns (GetTeachersResponse);
+  rpc CreateTeacher(CreateTeacherRequest) returns (CreateTeacherResponse);
+  rpc DeleteTeacher(DeleteTeacherRequest) returns (DeleteTeacherResponse);
+  rpc UpdateTeacher(UpdateTeacherRequest) returns (UpdateTeacherResponse);
+  // Ajouter d'autres méthodes au besoin
+}

@@ -1,5 +1,7 @@
 syntax = "proto3";
-package department;
+
+import "teacher.proto";
+
 
 message Department {
   int32 id = 1;
@@ -49,6 +51,15 @@ message UpdateDepartmentResponse {
   Department department = 1;
 }
 
+message GetTeachersByDepartmentRequest {
+  int32 departmentId = 1;
+}
+
+message GetTeachersByDepartmentResponse {
+  repeated Teacher teacherslist = 1;
+}
+
+
 // Définition du service de département
 service DepartmentService {
   rpc FindDepartment(FindDepartmentRequest) returns (FindDepartmentResponse);
@@ -56,5 +67,7 @@ service DepartmentService {
   rpc CreateDepartment(CreateDepartmentRequest) returns (CreateDepartmentResponse);
   rpc DeleteDepartment(DeleteDepartmentRequest) returns (DeleteDepartmentResponse);
   rpc UpdateDepartment(UpdateDepartmentRequest) returns (UpdateDepartmentResponse);
+  rpc GetTeachersByDepartment(GetTeachersByDepartmentRequest) returns (GetTeachersByDepartmentResponse);
+
   // Ajouter d'autres méthodes au besoin
 }

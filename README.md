@@ -11,18 +11,18 @@ This documentation provides an overview of my project, including the architectur
 - [API Endpoints](#api-endpoints)
   - [GraphQL](#graphql)
   - [REST](#rest)
+- [Database Structure](#Database-Structure)
 - [Setup Instructions](#setup-instructions)
 - [Usage Examples](#usage-examples)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Project Overview
 
-The project is a client-server application built using REST and GraphQL, where clients can perform actions on two microservices: the Department Microservice and the Teacher Microservice. The API Gateway serves as an intermediary, communicating with the microservices via GraphQL and using Protobuf for data serialization. Apollo is used as the GraphQL implementation.
+The project is a client-server application built using REST and GraphQL, where clients can perform actions on two microservices: the Department Microservice and the Teacher Microservice. The API Gateway serves as an intermediary, communicating with the microservices via gRPC. and using Protobuf for data serialization. Apollo is used as the GraphQL implementation.The project also includes a MySQL database named db_dep_teacher with two tables: teachers and departments.
 
 ## Architecture
 
-The architecture of the project follows a microservices pattern, with separate microservices for handling departments and teachers. The API Gateway acts as a single entry point for clients and communicates with the microservices via GraphQL. Here is an overview of the architecture:
+The architecture of the project follows a microservices pattern, with separate microservices for handling departments and teachers. The API Gateway acts as a single entry point for clients and communicates with the microservices via gRPC.. Here is an overview of the architecture:
 
 ```
 Client <-> API Gateway <-> Department Microservice
@@ -35,6 +35,7 @@ The following technologies are used in this project:
 
 - **REST** (Representational State Transfer): An architectural style for designing networked applications.
 - **GraphQL**: A query language and runtime for APIs that provides a flexible and efficient approach to data fetching.
+- **gRPC**: A high-performance, open-source framework for remote procedure calls (RPC).
 - **Protobuf** (Protocol Buffers): A language-agnostic binary serialization format used for efficient data interchange.
 - **Apollo**: An open-source GraphQL toolkit that provides a set of libraries and tools for building GraphQL applications.
 - **Node.js**: A JavaScript runtime that allows executing JavaScript code outside a web browser.
@@ -88,16 +89,32 @@ The following endpoints are available:
   - `DELETE /teachers/:id`: Delete a teacher.
   - `GET /teachers/department/:id`: Retrieve teachers by department ID.
 
+## Database Structure
+
+The project includes a MySQL database named `db_dep_teacher` with the following tables:
+
+- **teachers**: Stores information about teachers.
+  - `id` (INT): Teacher ID (primary key).
+  - `name` (VARCHAR): Teacher's first name.
+  - `lastname` (VARCHAR): Teacher's last name.
+  - `email` (VARCHAR): Teacher's email address.
+  - `departmentCode` (INT): Foreign key referencing the `departments` table.
+
+- **departments**: Stores information about departments.
+  - `id` (INT): Department ID (primary key).
+  - `name` (VARCHAR): Department name.
+
 ## Setup Instructions
 
 To set up the project locally, follow these steps:
 
 1. Clone the repository from GitHub: `<repository URL>`
-2. Install the required dependencies using a package manager like npm or yarn.
-3. Start the Department Microservice on port 50051 by running `node departmentMicroservice.js`.
-4. Start the Teacher Microservice on port 50054 by running `node teacherMicroservice.js`.
-5. Start the API Gateway on port 3000 by running `node apigateway.js`.
-6. The project is now set up locally and ready to use.
+2. Install the required dependencies using a package manager like npm.
+3. Set up the MySQL database with the name db_dep_teacher and import the file.
+4. Start the Department Microservice on port 50051 by running `node departmentMicroservice.js`.
+5. Start the Teacher Microservice on port 50054 by running `node teacherMicroservice.js`.
+6. Start the API Gateway on port 3000 by running `node apigateway.js`.
+7. The project is now set up locally and ready to use.
 
 ## Usage Examples
 
@@ -146,10 +163,4 @@ Here are some examples demonstrating how to interact with the project's API endp
 
 Refer to the API endpoints section for more details on available operations and request/response formats.
 
-## Contributing
 
-Contributions to this project are welcome. If you encounter any issues or have suggestions for improvements, please open an issue on the GitHub repository.
-
-## License
-
-[Include the license information for your project.]

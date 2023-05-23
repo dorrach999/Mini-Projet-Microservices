@@ -40,7 +40,6 @@ The following technologies are used in this project:
 - **Apollo**: An open-source GraphQL toolkit that provides a set of libraries and tools for building GraphQL applications.
 - **Node.js**: A JavaScript runtime that allows executing JavaScript code outside a web browser.
 - **Express.js**: A web application framework for Node.js that simplifies building APIs and web servers.
-- **<Other technologies/frameworks you used>**: List any other technologies or frameworks you used in your project.
 
 ## API Endpoints
 

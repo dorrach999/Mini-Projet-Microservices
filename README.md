@@ -120,7 +120,7 @@ Here are some examples demonstrating how to interact with the project's API endp
 
   ```graphql
   mutation {
-    createTeacher(name: "John", lastname: "Doe", email: "john.doe@example.com", departmentCode: 123) {
+    createTeacher(name: "John", lastname: "Doe", email: "john.doe@example.com", departmentCode: 1) {
       id
       name
       lastname

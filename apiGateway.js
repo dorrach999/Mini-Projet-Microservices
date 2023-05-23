@@ -56,16 +56,6 @@ server.start().then(() => {
   );
 });
 
-app.get('/department/teachers/:id', (req, res) => {
-  const id = req.params.id;
-  clientDepartments.getTeachersByDepartment({departmentId:id}, (err, response) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.json(response.teacherslist);
-    }
-  });
-}); 
 
 app.get('/departments', (req, res) => {
   clientDepartments.getDepartments({}, (err, response) => {
@@ -175,6 +165,17 @@ app.put('/teachers/:id', (req, res) => {
     }
   });
 });
+
+app.get('/teachers/department/:id', (req, res) => {
+  const id = req.params.id;
+  clientDepartments.getTeachersByDepartment({departmentId:id}, (err, response) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.json(response.teacherslist);
+    }
+  });
+}); 
 
 const port = 3000;
 app.listen(port, () => {

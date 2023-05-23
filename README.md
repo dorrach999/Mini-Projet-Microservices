@@ -18,7 +18,7 @@ This documentation provides an overview of my project, including the architectur
 
 ## Project Overview
 
-The project is a client-server application built using REST and GraphQL, where clients can perform actions on two microservices: the Department Microservice and the Teacher Microservice. The API Gateway serves as an intermediary, communicating with the microservices via gRPC. and using Protobuf for data serialization. Apollo is used as the GraphQL implementation.The project also includes a MySQL database named db_dep_teacher with two tables: teachers and departments.
+The project is a client-server application built using REST and GraphQL, where clients can perform actions on two microservices: the Department Microservice and the Teacher Microservice. The API Gateway serves as an intermediary, communicating with the microservices via gRPC and using Protobuf for data serialization. Apollo is used as the GraphQL implementation.The project also includes a MySQL database named db_dep_teacher with two tables: teachers and departments.
 
 ## Architecture
 
